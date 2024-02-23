@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Play Music on Image Click</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Click the Image to Play Music</h1>
+    
+    <img id="musicImage" src="https://i.pinimg.com/originals/71/28/3b/71283bb49db55cfee5bb6acd1389c465.jpg" alt="Music Image" onclick="playMusic()">
+    
+    <audio id="musicPlayer" controls>
+        <source src="ambient-relaxing-music-for-you-15969.mp3" type="audio/mpeg">
+        <!-- Your browser does not support the audio element. -->
+    </audio>
+
+    <script>
+        // Function to play music when the image is clicked
+        function playMusic() {
+            const musicPlayer = document.getElementById("musicPlayer");
+            if (musicPlayer.paused) {
+                musicPlayer.play();
+            } else {
+                musicPlayer.pause();
+            }
+        }
+    </script>
+</body>
+</html>

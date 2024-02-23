@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Playlist Management</title>
+</head>
+<body>
+    <h1>My Playlists</h1>
+
+    <?php
+    // Initialize an empty array to store playlists
+    $playlists = [];
+
+    // Function to create a new playlist
+    if (isset($_POST['create_playlist'])) {
+        $playlistName = $_POST['playlist_name'];
+        $playlists[] = [
+            'name' => $playlistName,
+            'songs' => [],
+        ];
+    }
+
+    // Function to add a song to a playlist
+    if (isset($_POST['add_song'])) {
+        $playlistId = $_POST['playlist_id'];
+        $songName = $_POST['song_name'];
+        $playlists[$playlistId]['songs'][] = $songName;
+    }
+
+    // Function to update a playlist's name
+    if (isset($_POST['update_playlist'])) {
+        $playlistId = $_POST['playlist_id'];
+        $newPlaylistName = $_POST['new_playlist_name'];
+        $playlists[$playlistId]['name'] = $newPlaylistName;
+    }
+
+    // Function to delete a playlist
+    if (isset($_GET['delete_playlist'])) {
+        $playlistId = $_GET['delete_playlist'];
+        unset($playlists[$playlistId]);
+    }
+    ?>
+
+    <!-- Form to create a new playlist -->
+    <form method="post">
+        <label for="playlist_name">Playlist Name:</label>
+        <input type="text" name="playlist_name" id="playlist_name">
+        <button type="submit" name="create_playlist">Create Playlist</button>
+    </form>
+
+    <!-- List of Playlists -->
+    <ul>
+        <?php
+        // Iterate through playlists and display them
+        foreach ($playlists as $playlistId => $playlist) {
+            echo '<li>';
+            echo '<strong>' . $playlist['name'] . '</strong>';
+            echo '<ul>';
+            foreach ($playlist['songs'] as $song) {
+                echo '<li>' . $song . '</li>';
+            }
+            echo '</ul>';
+
+            // Form to update the playlist name
+            echo '<form method="post">
+                <label for="new_playlist_name">New Playlist Name:</label>
+                <input type="text" name="new_playlist_name" id="new_playlist_name" placeholder="New Name">
+                <input type="hidden" name="playlist_id" value="' . $playlistId . '">
+                <button type="submit" name="update_playlist">Update Playlist</button>
+            </form>';
+
+            // Link to delete the playlist
+            echo '<a href="?delete_playlist=' . $playlistId . '">Delete Playlist</a>';
+            echo '</li>';
+        }
+        ?>
+    </ul>
+</body>
+</html>

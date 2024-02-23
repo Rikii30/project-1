@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"
+			  type="text/css"
+			  href="bootstrap.css"
+		      />
+    <script>
+        const cart = [];
+
+        function addToCart(dollName, price) {
+            cart.push({ name: dollName, price: price });
+            alert(`Added ${dollName} to the cart. Total items in cart: ${cart.length}`);
+        }
+
+        function viewCart() {
+            if (cart.length === 0) {
+                alert("Your shopping cart is empty.");
+            } else {
+                let cartItems = "Items in your cart:\n";
+                let total = 0;
+                for (const item of cart) {
+                    cartItems += `${item.name} - $${item.price}\n`;
+                    total += item.price;
+                }
+                cartItems += `Total: $${total}`;
+                alert(cartItems);
+            }
+        }
+    </script>
+    <style>
+      
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shop Vinlys</h1>
+    </header>
+
+    <nav>
+        <a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+        <a href="mylist.html"><i class="fas fa-user"></i>Mylist</a></li>
+        <a href="songs.html"><i class="fas fa-user"></i>Songs</a></li>
+        <!-- <a href="shop.html"><i class="fas fa-address-card"></i>Shop</a></li> -->
+    </nav>
+
+    <div class="container">
+        <h2>Welcome to Shop your favourite vinyls at one spot</h2>
+        <p>Welcome to our Vinyl Record Shop, your one-stop destination for music enthusiasts and collectors. We offer a curated selection of vintage and contemporary vinyl records that will take you on a musical journey like no other. Dive into the rich, warm sound of analog music with our extensive collection.        </p>
+        <hr>
+        <br>
+        <!-- <h3>Dolls for Sale</h3> -->
+        <div class="vinyl-list">
+            <div class="vinyl">
+                <h4>Sour by Olivia Rodrigo</h4>
+                <img src="https://i5.walmartimages.com/seo/Olivia-Rodrigo-Sour-Deluxe-Vinyl_65ac1a6d-4b9d-45d6-bda1-e211743d7cb3.f82860082e43f39c73e842f2ef62041f.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF" alt="Sour by Olivia Rodrigo" class="vinyl-image">
+                <p>Price: $50</p>
+                <button onclick="addToCart('Sour by Olivia Rodrigo', 50)">Add to Cart</button>
+            </div>
+            <div class="vinyl">
+                <h4>30 by Adele</h4>
+                <img src="https://i5.walmartimages.com/seo/Adele-30-Standard-Vinyl_b4c045bf-96a7-4f28-b4fc-4243524ee9d5.d8110f25fd53e86e98038213634953d3.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF" alt="30 by Adele" class="vinyl-image">
+                
+                <p>Price: $65</p>
+                <button onclick="addToCart('30 by Adele', 65)">Add to Cart</button>
+            </div>
+            <div class="vinyl">
+                <h4>Golden Records- Elvis</h4>
+                <img src="https://i5.walmartimages.com/seo/Elvis-Golden-Records-Walmart-Exclusive-Rock-Vinyl-LP_7341ef50-4aac-4475-ac40-17eda6386d14.703cfe06d519d30afddbb645ec2cf91a.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF.jpg" alt="Golden Records- Elvis" class="vinyl-image">
+               
+                <p>Price: $80</p>
+                <button onclick="addToCart('Golden Records- Elvis', 80)">Add to Cart</button>
+            </div>
+            <div class="vinyl">
+                <h4>Fearless by Taylor Swift</h4>
+                <img src="https://i5.walmartimages.com/seo/Taylor-Swift-Fearless-Taylor-s-Version-Gold-3LP-Country-Vinyl_173db402-f970-4e59-8d80-a9c53c0957e8.ba5f02efe889351ea4ea44f5df6e5833.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF" alt="Fearless by Taylor Swift" class="vinyl-image">
+              
+                <p>Price: $55</p>
+                <button onclick="addToCart('Fearless by Taylor Swift', 55)">Add to Cart</button>
+            </div>
+            <div class="vinyl">
+                <h4>Ed Sheeran hits</h4>
+                <img src="https://i5.walmartimages.com/seo/Ed-Sheeran-Walmart-Exclusive-Vinyl_4de7d935-e3c5-4af1-a90f-0a1bbd399b41.726f33cad636e9a8d3761ceec34c042d.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF" alt="Ed Sheeran hits" class="vinyl-image">
+               
+                <p>Price: $30</p>
+                <button onclick="addToCart('Ed Sheeran hits', 30)">Add to Cart</button>
+            </div>
+            <div class="vinyl">
+                <h4>24k Magic by Bruno Mars</h4>
+                <img src="https://i5.walmartimages.com/seo/Bruno-Mars-24k-Magic-Walmart-Exclusive-Vinyl-Exclusive_682b4655-6019-4b3e-a1db-7650fb89f0c9.129085c8b87d8e785a68f05f0dbf0c4f.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF" alt="24k Magic by Bruno Mars" class="vinyl-image">
+            
+                <p>Price: $70</p>
+                <button onclick="addToCart('24k Magic by Bruno Mars', 70)">Add to Cart</button>
+            </div>
+            <div class="vinyl">
+                <h4>Portals by Melanie Martinez</h4>
+                <img src="https://i5.walmartimages.com/seo/Melanie-Martinez-PORTALS-Vinyl_ec9c6cac-64f4-48b1-a103-b08db22604e7.e57a738f37a35651180528bc757ee1ad.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF
+                " alt="Portals by Melanie Martinez" class="vinyl-image">
+            
+                <p>Price: $24.99</p>
+                <button onclick="addToCart('Portals by Melanie Martinez', 24.99)">Add to Cart</button>
+            </div>
+            <div class="vinyl">
+                <h4>Barbie Album</h4>
+                <img src="https://i5.walmartimages.com/seo/Barbie-The-Album-Walmart-Exclusive-Clear-Pink-Splatter-Color-Vinyl-Margot-Robbie-Poster-Soundtrack-LP-Atlantic_479a53b7-d048-4a02-99bf-5562203cf54b.f5165ff841e10c6d8b5f7d4eeda05948.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF" alt="Barbie Album" class="vinyl-image">
+            
+                <p>Price: $24.99</p>
+                <button onclick="addToCart('Barbie Album', 24.99)">Add to Cart</button>
+            </div>
+        </div>
+        
+    </div>
+    <center>
+        <h3 style="background-color: aliceblue;">Shopping Cart</h3>
+        <button onclick="viewCart()">View Cart</button></center>
+    </div>
+    
+    <center>
+        <footer>
+            &copy; 2023 Music World
+        </footer>
+        </center>
+</body>
+</html>

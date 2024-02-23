@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"
+			  type="text/css"
+			  href="bootstrap.css"
+		      />
+    <!-- <link rel="cssresetter" href="resetter.css"> -->
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h2>Sidebar</h2>
+            <center>
+            <ul>
+                <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="mylist.html"><i class="fas fa-user"></i>Mylist</a></li>
+                <!-- <li><a href="shop.html"><i class="fas fa-user"></i>shop</a></li> -->
+                <li><a href="shop.html"><i class="fas fa-address-card"></i>Shop</a></li>
+                <!-- <li><a href="contact.html"><i class="fas fa-project-diagram"></i>Contact</a></li> -->
+            </ul> 
+        </center>
+        </div>
+        
+        <div class="song-list main_content">
+            <div class="header">
+            <h1>Trendy songs of the season</h1>
+        </div>
+        
+            <div class="song-list">
+           
+                
+                <!-- Song 1 -->
+                <div class="song" onclick="toggleSong('NF - RUNNING (Audio).mp3', this)">
+                    <img src="https://images.genius.com/fa2ea9de22acd7381038c0033b7fc6f7.300x300x1.png" alt="Song 1" id="img">
+                    <center><p>RUNNING by NF</p></center>
+                </div>
+        
+                <!-- Song 2 -->
+                <div class="song" onclick="toggleSong('David Kushner - Daylight (Official Music Video).mp3', this)">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/1/1e/David_Kushner-_Daylight.png" alt="Song 2" id="img">
+                    <center><p>Daylight by David Kushner</p></center>
+                </div>
+
+                <!-- Song 3 -->
+                <div class="song" onclick="toggleSong('Hozier - Like Real People Do (Official Audio).mp3', this)">
+                    <img src="https://i1.sndcdn.com/artworks-000122637040-m8pala-t500x500.jpg" alt="Song 2" id="img">
+                    <center><p>Like real people do by Hozier</p></center>
+                </div>
+        
+        
+                <!-- Add more songs as needed -->
+            </div>
+    
+            <div class="song-list">
+                <!-- Song 1 -->
+                <div class="song" onclick="toggleSong('SUBURBIA.mp3', this)">
+                    <img src="https://images.genius.com/655bfced19eb97cd4f0daa13c8302844.300x300x1.png" alt="Song 1" id="img">
+                    <center><p>Suburbia by Troye Sivan</p></center>
+                </div>
+        
+                <!-- Song 2 -->
+                <div class="song" onclick="toggleSong('Post Malone - Chemical (Official Music Video).mp3', this)">
+                    <img src="https://i1.sndcdn.com/artworks-WEjmaNpXf21nA5Wp-MsBAdw-t500x500.jpg" alt="Song 2" id="img">
+                    <center><p>Chemical by Post Chemical</p></center>
+                </div>
+
+                <!-- Song 3 -->
+                <div class="song" onclick="toggleSong('Lana Del Rey - Summertime Sadness (Official Music Video).mp3', this)">
+                    <img src="https://geo-media.beatsource.com/image_size/1400x1400/5/8/8/5888ee97-2373-4699-a2ce-67db54ea0358.jpg" alt="Song 2" id="img">
+                    <center><p>Summertime Sadness by Lana Del Rey</p></center>
+                </div>
+            </div>
+            
+            <div class="song-list">
+                <!-- Song 1 -->
+                <div class="song" onclick="toggleSong('Stephen Sanchez - Until I Found You (Official Video).mp3', this)">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/f/f5/Stephen_Sanchez_-_Until_I_Found_You.png" alt="Song 1" id="img">
+                    <center><p>Until I found you by Stephen Sanchez</p></center>
+                </div>
+        
+                <!-- Song 2 -->
+                <div class="song" onclick="toggleSong('Billie Eilish - What Was I Made For_ (Official Music Video).mp3', this)">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/5/54/Billie_Eilish_-_What_Was_I_Made_For%3F.png" alt="Song 2" id="img">
+                    <center><p>What Was I Made For by Billie Eilish</p></center>
+                </div>
+
+                <!-- Song 3 -->
+                <div class="song" onclick="toggleSong('Lizzy McAlpine - ceilings (official video).mp3', this)">
+                    <img src="https://i1.sndcdn.com/artworks-yvlVK2n5cvlfDpBn-y1VZHA-t500x500.jpg" alt="Song 2" id="img">
+                    <center><p>Ceilings by Lizzy McAlpine</p></center>
+                </div>
+            </div>
+            <audio id="audioPlayer" controls>
+                <source src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        
+            <script>
+                function toggleSong(songFile, element) {
+                    const audioPlayer = document.getElementById("audioPlayer");
+        
+                    if (audioPlayer.src === window.location.href + songFile) {
+                        // If the same song is already playing, pause it
+                        audioPlayer.pause();
+                        element.classList.remove("playing");
+                    } else {
+                        // Otherwise, set the new song and play it
+                        audioPlayer.src = songFile;
+                        audioPlayer.play();
+        
+                        // Remove the "playing" class from all songs
+                        const songs = document.querySelectorAll(".song");
+                        songs.forEach(song => song.classList.remove("playing"));
+        
+                        // Add the "playing" class to the clicked song
+                        element.classList.add("playing");
+                    }
+                }
+            </script>
+
+        </div>
+
+    </div>
+    </body>
+    </html>

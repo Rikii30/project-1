@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Playlist Management</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>My Playlists</h1>
+    
+    <!-- Create a New Playlist -->
+    <div id="newPlaylist">
+        <input type="text" id="playlistName" placeholder="Playlist Name">
+        <button onclick="createPlaylist()">Create Playlist</button>
+    </div>
+
+    <!-- List of Playlists -->
+    <div id="playlistList">
+        <!-- Playlists will be dynamically added here -->
+    </div>
+
+    <script>
+        // Sample playlists data (you would fetch this from a database)
+        const playlists = [
+            { id: 1, name: "My Favorites", tracks: ["Song A", "Song B"] },
+            { id: 2, name: "Workout Mix", tracks: ["Song C", "Song D"] }
+        ];
+
+        // Function to create a new playlist
+        function createPlaylist() {
+            const playlistName = document.getElementById("playlistName").value;
+            // Add new playlist to the database and update the UI
+            // (You'd typically send a request to a server to create a new playlist)
+            playlists.push({ id: playlists.length + 1, name: playlistName, tracks: [] });
+            updatePlaylistUI();
+        }
+
+        // Function to add a song to a playlist
+        function addSongToPlaylist(playlistId) {
+            const songName = prompt("Enter the name of the song:");
+            if (songName) {
+                // Find the playlist by ID and add the song to it
+                const playlist = playlists.find(playlist => playlist.id === playlistId);
+                if (playlist) {
+                    playlist.tracks.push(songName);
+                    updatePlaylistUI();
+                }
+            }
+        }
+
+        // Function to edit a playlist (name and tracks)
+        function editPlaylist(playlistId) {
+            const playlist = playlists.find(playlist => playlist.id === playlistId);
+            if (playlist) {
+                const newPlaylistName = prompt("Enter the new playlist name:", playlist.name);
+                if (newPlaylistName) {
+                    playlist.name = newPlaylistName;
+
+                    // Display the updated name on the page
+                    updatePlaylistUI();
+                }
+            }
+        }
+
+        // Function to delete a playlist
+        function deletePlaylist(playlistId) {
+            // Remove the playlist from the database and update the UI
+            // (You'd typically send a request to a server to delete the playlist)
+            const index = playlists.findIndex(playlist => playlist.id === playlistId);
+            if (index !== -1) {
+                playlists.splice(index, 1);
+                updatePlaylistUI();
+            }
+        }
+
+        // Function to update the playlist list on the page
+        function updatePlaylistUI() {
+            const playlistList = document.getElementById("playlistList");
+            playlistList.innerHTML = "";
+
+            for (const playlist of playlists) {
+                const playlistDiv = document.createElement("div");
+                playlistDiv.innerHTML = `
+                    <h3>${playlist.name}</h3>
+                    <ul>
+                        ${playlist.tracks.map(track => `<li>${track}</li>`).join('')}
+                    </ul>
+                    <button onclick="addSongToPlaylist(${playlist.id})">Add Song</button>
+                    <button onclick="editPlaylist(${playlist.id})">Edit Playlist</button>
+                    <button onclick="deletePlaylist(${playlist.id})">Delete Playlist</button>
+                `;
+                playlistList.appendChild(playlistDiv);
+            }
+        }
+
+        // Initialize the UI with existing playlists
+        updatePlaylistUI();
+    </script>
+</body>
+</html>

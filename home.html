@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Website</title>
+    <style>
+        /* Add your CSS styles here */
+ 
+    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"
+			  type="text/css"
+			  href="bootstrap.css"
+		      />
+</head>
+<body>
+    <header>
+        <h1>Welcome to Symphony Spot</h1>
+        <!-- <p>Discover, Enjoy, and Shop for the Best Music</p>     -->
+    </header>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="songs.html">Songs</a>
+        <a href="shop.html">Shop</a>
+        <a href="mylist.html">My List</a>
+        <!-- Add more navigation links as needed -->
+    </nav>
+    
+    <!-- <div class="container">
+        <h2>Featured Music</h2>
+        <div class="featured-music">
+            Add featured music content here -->
+            <!-- You can display album covers, artist information, etc. -->
+        </div>
+    </div> 
+    <center>
+        <div>
+            <p id="homep"> Welcome to our music paradise, where you can immerse yourself in a world of melodies and rhythms. We're your go-to destination for all things music. Whether you're a music enthusiast or a casual listener, we've got something special for you.</p>
+        </div>
+    </center>
+    
+    <div class="slideshow-container">
+        <div class="mySlides">
+            <img src="https://variety.com/wp-content/uploads/2022/07/Music-Streaming-Wars.jpg?w=1024.jpg" alt="Image 1">
+        </div>
+        <div class="mySlides">
+            <img src="https://studyworkgrow.com.au/wp-content/uploads/2021/03/Music-Therapist-JS-1024x576.png" alt="Image 2">
+        </div>
+        <div class="mySlides">  
+            <img src="https://kentwired.com/wp-content/uploads/2023/08/AIPhotoAlton.png" alt="Image 3">
+        </div>
+
+        <!-- Add more slides with images as needed -->
+
+        <!-- Previous and Next buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <!-- Add slide indicators (optional) -->
+    <div style="text-align: center;">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <!-- Add more indicators as needed -->
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("mySlides");
+            const dots = document.getElementsByClassName("dot");
+
+            if (n > slides.length) {
+                slideIndex = 1;
+            }
+            if (n < 1) {
+                slideIndex = slides.length;
+            }
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+<center>
+<footer>
+    &copy; 2023 Music World
+</footer>
+</center>
+    <!-- Add more content, sections, and features here -->
+
+</body>
+</html>
